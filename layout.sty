@@ -1,0 +1,32 @@
+\ProvidesPackage{layout}
+
+\RequirePackage[
+  margin=2cm,
+  a4paper
+]{geometry}
+
+\RequirePackage{titlesec}
+\titlespacing{\section}{0pt}{1.5ex plus 1ex minus .2ex}{1ex minus .2ex}
+\titlespacing{\subsection}{0pt}{1.2ex plus 1ex minus .2ex}{0.8ex minus .2ex}
+
+\RequirePackage{enumitem}
+\setlist{itemsep=0pt, parsep=0pt, topsep=2pt, partopsep=0pt}
+\setlist[enumerate]{label=\arabic*.}
+
+\RequirePackage{titling}
+\setlength{\droptitle}{-5em}
+\renewcommand{\maketitlehookc}{\vspace*{-1.5em}}
+
+
+\titlespacing{\paragraph}{%
+    0pt
+}{
+    0.1\baselineskip%
+}{
+    1em
+}
+
+\setlength{\parskip}{0.1\baselineskip}
+
+\RequirePackage[numbers]{natbib}
+\bibliographystyle{plainnat}
