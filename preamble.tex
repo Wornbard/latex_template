@@ -142,10 +142,13 @@
 % OPERATORS & PROBABILITY NOTATION
 % =========================================================
 \renewcommand{\P}{\mathbb{P}}
-\newcommand{\lar}[2]{#1 \Longrightarrow #2}
-\newcommand{\topr}[2]{#1 \overset{\P}{\longrightarrow} #2}
-\newcommand{\tolp}[2]{#1 \overset{\Lp}{\longrightarrow} #2}
-\newcommand{\tod}[2]{#1 \overset{d}{\longrightarrow} #2}
+\newcommand{\lar}{\Longrightarrow}
+\newcommand{\topr}{\overset{\P}{\longrightarrow}}
+\newcommand{\tolp}{\overset{\Lp}{\longrightarrow}}
+\newcommand{\tod}{\overset{d}{\longrightarrow}}
+
+\newcommand{\eqd}{\overset{d}{=}} %equal in distribution
+
 
 
 \DeclareMathOperator{\dist}{dist}
@@ -167,6 +170,7 @@
 % THEOREM ENVIRONMENTS
 % =========================================================
 \newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
 \newtheorem{prop}{Proposition}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
@@ -234,8 +238,10 @@
 \newcommand{\inp}[2]{\left\langle #1 \right\rangle_{#2}} % inner product
 
 \newcommand*\diff{\mathop{}\!\mathrm{d}} % differential operator
-\newcommand{\Tt}{^\mathsf{\scriptscriptstyle T}} %transpose
 
+\newcommand{\id}{\mathbf{I}}
+\newcommand{\Tt}{^\mathsf{\scriptscriptstyle T}} %transpose
+\newcommand{\inv}{^{-1}}%inverse
 
 
 % Highlight a newly defined term
@@ -454,7 +460,7 @@
 \def\tZ{{\tens{Z}}}
 
 
-% Caligraphic
+% Caligraphic(alternative)
 \def\gA{{\mathcal{A}}}
 \def\gB{{\mathcal{B}}}
 \def\gC{{\mathcal{C}}}
@@ -553,3 +559,13 @@
 \newcommand{\mbf}[1]{\mathbf{#1}}
 \newcommand{\mbb}[1]{\mathbb{#1}}
 \newcommand{\mc}[1]{\mathcal{#1}}
+
+%pushforward
+\newcommand{\push}{_\sharp}
+
+%groups
+\newcommand{\subgp}{<}
+\newcommand{\nsubgp}{\triangleleft}
+\newcommand{\sdprod}{\rtimes}
+\newcommand{\lsdprod}{\ltimes}
+\newcommand{\isom}{\simeq}
