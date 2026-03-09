@@ -46,6 +46,9 @@
 % =========================================================
 % SETS (from both preambles)
 % =========================================================
+\newcommand{\sub}{\subset}
+\newcommand{\sube}{\subseteq}
+\newcommand{\symdif}{\triangle}
 \newcommand{\indep}{\mathrel{\perp\mspace{-7mu}\perp}}
 % Not independence (slash across both)
 \newcommand{\nindep}{\mathrel{\ooalign{$\indep$\cr\hidewidth$/$\hidewidth\cr}}}
@@ -160,6 +163,13 @@
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
+\newcommand{\Dd}{\nabla} % quick gradient/derivative notation
+
+\newcommand{\pd}{\succ 0} % positive definite
+\newcommand{\psd}{\succeq 0}
+\newcommand{\nd}{\prec 0} % negative definite
+\newcommand{\nsd}{\preceq 0}
+
 % =========================================================
 % INDEPENDENCE
 % =========================================================
@@ -171,12 +181,12 @@
 % =========================================================
 \newtheorem{definition}{Definition}
 \newtheorem{example}{Example}
-\newtheorem{prop}{Proposition}
+\newtheorem{propositionp}{Proposition}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
-\newtheorem{asst}{Assumption}
+\newtheorem{assumption}{Assumption}
 \newtheorem{corollary}{Corollary}
-\newtheorem{rem}{Remark}
+\newtheorem{remark}{Remark}
 \newtheorem{conjecture}{Conjecture}
 
 \crefname{asst}{assumption}{assumptions}
@@ -234,9 +244,10 @@
 \newcommand{\lrang}[1]{\left\langle #1 \right\rangle}
 \newcommand{\lrv}[1]{\lvert #1 \rvert}
 \newcommand{\lrV}[1]{\left\| #1 \right\|} 
+\newcommand{\lrb}[1]{\left\{ #1 \right\}}
+\newcommand{\lrs}[1]{\left[ #1 \right]}
 \newcommand{\norm}[2]{\left\| #1 \right\|_{#2}}
 \newcommand{\inp}[2]{\left\langle #1 \right\rangle_{#2}} % inner product
-
 \newcommand*\diff{\mathop{}\!\mathrm{d}} % differential operator
 
 \newcommand{\id}{\mathbf{I}}
@@ -298,7 +309,7 @@
 \def\bj{{\mathbf{j}}}
 \def\bk{{\mathbf{k}}}
 \def\bl{{\mathbf{l}}}
-\def\bm{{\mathbf{m}}}
+% \def\bm{{\mathbf{m}}} \bm is a package
 \def\bn{{\mathbf{n}}}
 \def\bo{{\mathbf{o}}}
 \def\bp{{\mathbf{p}}}
