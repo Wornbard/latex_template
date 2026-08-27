@@ -1,10 +1,10 @@
-%Originally created by Kevin Huang and modified for my use
+% Shared packages and notation.
 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{hyperref}
-\usepackage{amsfonts,amsmath,amsthm,amssymb,stmaryrd,bbm}
+\usepackage{amsfonts,amsmath,amsthm,amssymb,stmaryrd,bbm,bm}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
 \usepackage{enumitem}
@@ -17,18 +17,18 @@
 \usepackage{xspace}
 \usepackage{soul}
 \usepackage{tabularx}
+\usepackage{changepage}
 
 \usepackage{tikz}
-\usepackage{pgfplots} % Needed for decorating braces
 
 \usetikzlibrary{positioning,decorations.pathreplacing,calc}
 
-%=========================================================
-% COLORS & HYPERLINKS
-% =========================================================
+% Colors and hyperlinks
 \usepackage[dvipsnames]{xcolor}
 \definecolor{dgreen}{rgb}{0.00,0.49,0.00}
 \definecolor{dblue}{rgb}{0,0.08,0.75}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\red}[1]{{\color{red}#1}}
 \hypersetup{
     colorlinks = true,
     citecolor=dgreen,
@@ -36,27 +36,18 @@
     linkcolor=dblue
 }
 
-% =========================================================
-% FORMATTING
-% =========================================================
+% Page formatting
 \setlength{\columnseprule}{0.1pt}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{10pt}
 
-% =========================================================
-% SETS (from both preambles)
-% =========================================================
+% Sets and independence
 \newcommand{\sub}{\subset}
-\newcommand{\sube}{\subseteq}
-\newcommand{\symdif}{\triangle}
 \newcommand{\indep}{\mathrel{\perp\mspace{-7mu}\perp}}
-% Not independence (slash across both)
+% Slash both perpendicular symbols.
 \newcommand{\nindep}{\mathrel{\ooalign{$\indep$\cr\hidewidth$/$\hidewidth\cr}}}
-% \def\ci{\perp\!\!\!\perp}
-%\newcommand\indep{\protect\mathpalette{\protect\independenT}{\perp}}
 
 \newcommand{\esssup}{\operatorname*{ess\,sup}}
-
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -69,90 +60,88 @@
 \newcommand{\Rp}{\mathbb{R}^{p}}
 \newcommand{\Rq}{\mathbb{R}^{q}}
 
-% Script / Calligraphic
-\newcommand{\cX}{\mathcal{X}}
-\newcommand{\cY}{\mathcal{Y}}
-\newcommand{\cF}{\mathcal{F}}
-\newcommand{\cZ}{\mathcal{Z}}
-\newcommand{\cH}{\mathcal{H}}
-\newcommand{\cM}{\mathcal{M}}
-\newcommand{\cN}{\mathcal{N}}
-\newcommand{\cQ}{\mathcal{Q}}
+% Calligraphic letters
 \newcommand{\cA}{\mathcal{A}}
-\newcommand{\cP}{\mathcal{P}}
-\newcommand{\cR}{\mathcal{R}}
-\newcommand{\cS}{\mathcal{S}}
-\newcommand{\cG}{\mathcal{G}}
-\newcommand{\cL}{\mathcal{L}}
-\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
 \newcommand{\cD}{\mathcal{D}}
 \newcommand{\cE}{\mathcal{E}}
-\newcommand{\cB}{\mathcal{B}}
-\newcommand{\cT}{\mathcal{T}}
-\newcommand{\cW}{\mathcal{W}}
-\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
 \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
 \newcommand{\cV}{\mathcal{V}}
-\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
 
-% Blackboard
-\def\sA{{\mathbb{A}}}
-\def\sB{{\mathbb{B}}}
-\def\sC{{\mathbb{C}}}
-\def\sD{{\mathbb{D}}}
-\def\sF{{\mathbb{F}}}
-\def\sG{{\mathbb{G}}}
-\def\sH{{\mathbb{H}}}
-\def\sI{{\mathbb{I}}}
-\def\sJ{{\mathbb{J}}}
-\def\sK{{\mathbb{K}}}
-\def\sL{{\mathbb{L}}}
-\def\sM{{\mathbb{M}}}
-\def\sN{{\mathbb{N}}}
-\def\sO{{\mathbb{O}}}
-\def\sP{{\mathbb{P}}}
-\def\sQ{{\mathbb{Q}}}
-\def\sR{{\mathbb{R}}}
-\def\sS{{\mathbb{S}}}
-\def\sT{{\mathbb{T}}}
-\def\sU{{\mathbb{U}}}
-\def\sV{{\mathbb{V}}}
-\def\sW{{\mathbb{W}}}
-\def\sX{{\mathbb{X}}}
-\def\sY{{\mathbb{Y}}}
-\def\sZ{{\mathbb{Z}}}
+% Blackboard letters; E is reserved for expectation.
+\newcommand{\sA}{\mathbb{A}}
+\newcommand{\sB}{\mathbb{B}}
+\newcommand{\sC}{\mathbb{C}}
+\newcommand{\sD}{\mathbb{D}}
+\newcommand{\sF}{\mathbb{F}}
+\newcommand{\sG}{\mathbb{G}}
+\newcommand{\sH}{\mathbb{H}}
+\newcommand{\sI}{\mathbb{I}}
+\newcommand{\sJ}{\mathbb{J}}
+\newcommand{\sK}{\mathbb{K}}
+\newcommand{\sL}{\mathbb{L}}
+\newcommand{\sM}{\mathbb{M}}
+\newcommand{\sN}{\mathbb{N}}
+\newcommand{\sO}{\mathbb{O}}
+\newcommand{\sP}{\mathbb{P}}
+\newcommand{\sQ}{\mathbb{Q}}
+\newcommand{\sR}{\mathbb{R}}
+\newcommand{\sS}{\mathbb{S}}
+\newcommand{\sT}{\mathbb{T}}
+\newcommand{\sU}{\mathbb{U}}
+\newcommand{\sV}{\mathbb{V}}
+\newcommand{\sW}{\mathbb{W}}
+\newcommand{\sX}{\mathbb{X}}
+\newcommand{\sY}{\mathbb{Y}}
+\newcommand{\sZ}{\mathbb{Z}}
 
-% =========================================================
-% FUNCTION SPACES
-% =========================================================
+% Function spaces
 \newcommand{\mipi}{[- \infty, + \infty]}
 
-\renewcommand{\L}{L^{1}}
+\newcommand{\Lone}{L^{1}}
 \newcommand{\Ld}{L^{2}}
 \newcommand{\Lp}{L^{p}}
 \newcommand{\Linf}{L^{\infty}}
-\renewcommand{\l}{\ell^{1}(\Z)}
+\newcommand{\ellone}{\ell^{1}(\Z)}
 \newcommand{\ld}{\ell^{2}(\Z)}
 \newcommand{\linf}{\ell^{\infty}(\Z)}
 
-% =========================================================
-% RANDOM VARIABLES, VECTORS, MATRICES, TENSORS (from Preamble 2)
-% =========================================================
-% (Full block of \ra, \rvx, \rmA, \mA, \tA, etc. kept exactly as in Preamble 2)
-% --- I won’t repeat here due to length, but include ALL definitions exactly ---
-
-% =========================================================
-% OPERATORS & PROBABILITY NOTATION
-% =========================================================
-\renewcommand{\P}{\mathbb{P}}
-\newcommand{\lar}{\Longrightarrow}
+% Operators and probability notation
+\renewcommand{\P}{\mathbb{P}} % Repurpose LaTeX's pilcrow command for probability.
+\newcommand{\lar}{\longrightarrow}
 \newcommand{\topr}{\overset{\P}{\longrightarrow}}
 \newcommand{\tolp}{\overset{\Lp}{\longrightarrow}}
 \newcommand{\tod}{\overset{d}{\longrightarrow}}
 
-\newcommand{\eqd}{\overset{d}{=}} %equal in distribution
-
-
+\newcommand{\eqd}{\overset{d}{=}} % Equal in distribution.
+\newcommand{\aas}[1][]{% Almost surely.
+  \quad
+  \if\relax\detokenize{#1}\relax
+    \text{a.s.}%
+  \else
+    #1\text{-a.s.}%
+  \fi
+}
 
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\Diag}{Diag}
@@ -160,31 +149,23 @@
 \DeclareMathOperator{\Hessian}{Hess}
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\Tr}{Tr}
+\newcommand{\symdif}{\mathbin{\triangle}}
+\DeclareMathOperator{\tv}{TV}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
-\newcommand{\Dd}{\nabla} % quick gradient/derivative notation
-
-\newcommand{\pd}{\succ 0} % positive definite
-\newcommand{\psd}{\succeq 0}
-\newcommand{\nd}{\prec 0} % negative definite
-\newcommand{\nsd}{\preceq 0}
-
-% =========================================================
-% INDEPENDENCE
-% =========================================================
+% Alternative independence notation
 \newcommand{\ind}{\perp\!\!\!\!\!\perp} % independence
 \newcommand{\nind}{\not\!\perp\!\!\!\!\!\perp} % NOT independent
 
-% =========================================================
-% THEOREM ENVIRONMENTS
-% =========================================================
+% Theorem environments
 \newtheorem{definition}{Definition}
 \newtheorem{example}{Example}
-\newtheorem{propositionp}{Proposition}
+\newtheorem{nonex}[example]{Non-example}
+\newtheorem{proposition}{Proposition}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
-\newtheorem{assumption}{Assumption}
+\newtheorem{asst}{Assumption}
 \newtheorem{corollary}{Corollary}
 \newtheorem{remark}{Remark}
 \newtheorem{conjecture}{Conjecture}
@@ -192,378 +173,312 @@
 \crefname{asst}{assumption}{assumptions}
 \crefname{equation}{Eq.}{Eqs.}
 
-
-
-
-% =========================================================
-% MISC SHORTCUTS (from both)
-% =========================================================
+% Text shortcuts
 \makeatletter
 \DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
 \def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
 \makeatother
 
-% Latin abbreviations
-\def\cf{\textit{c.f}\onedot}
-\def\eg{\textit{e.g}\onedot}
-\def\etal{\textit{et al}\onedot}
-\def\etc{\textit{etc}\onedot}
-\def\ie{\textit{i.e}\onedot}
-\def\iid{i.i.d\onedot}
-\def\vs{\textit{vs}\onedot}
-\def\wrt{w.r.t\onedot}
-
+\newcommand{\cf}{\textit{c.f}\onedot}
+\newcommand{\eg}{\textit{e.g}\onedot}
+\newcommand{\etal}{\textit{et al}\onedot}
+\newcommand{\etc}{\textit{etc}\onedot}
+\newcommand{\ie}{\textit{i.e}\onedot}
+\newcommand{\iid}{i.i.d\onedot}
+\newcommand{\vs}{\textit{vs}\onedot}
+\newcommand{\wrt}{w.r.t\onedot}
 
 \renewcommand{\emph}[1]{\textbf{\textit{#1}}}
 
-% greek letters
+% Short aliases for Greek letters; already-short standard names are left unchanged.
 \newcommand{\al}{\alpha}
-\newcommand{\be}{\beta}
-\newcommand{\si}{\sigma}
-\newcommand{\la}{\lambda}
+\newcommand{\bet}{\beta}
 \newcommand{\ga}{\gamma}
-\newcommand{\Ga}{\Gamma}
-\newcommand{\Si}{\Sigma}
 \newcommand{\de}{\delta}
-\newcommand{\De}{\Delta}
-\newcommand{\om}{\omega}
-\newcommand{\Om}{\Omega}
-\newcommand{\thet}{\theta}
-\newcommand{\Th}{\Theta}
-\newcommand{\ka}{\kappa}
 \newcommand{\eps}{\epsilon}
+\newcommand{\ze}{\zeta}
+\newcommand{\et}{\eta}
+\newcommand{\thet}{\theta}
+\newcommand{\io}{\iota}
+\newcommand{\ka}{\kappa}
+\newcommand{\la}{\lambda}
+\newcommand{\si}{\sigma}
+\newcommand{\ta}{\tau}
+\newcommand{\up}{\upsilon}
+\newcommand{\ph}{\phi}
+\newcommand{\ch}{\chi}
+\newcommand{\ps}{\psi}
+\newcommand{\om}{\omega}
 
+\newcommand{\Ga}{\Gamma}
+\newcommand{\De}{\Delta}
+\newcommand{\Th}{\Theta}
+\newcommand{\La}{\Lambda}
+\newcommand{\Si}{\Sigma}
+\newcommand{\Up}{\Upsilon}
+\newcommand{\Ph}{\Phi}
+\newcommand{\Ps}{\Psi}
+\newcommand{\Om}{\Omega}
 
-%default phi
-\let\oldphi\phi
-\let\phi\varphi
-\let\varphi\oldphi
+\newcommand{\veps}{\varepsilon}
+\newcommand{\vthet}{\vartheta}
+\newcommand{\vka}{\varkappa}
+\newcommand{\vpi}{\varpi}
+\newcommand{\vrho}{\varrho}
+\newcommand{\vsi}{\varsigma}
+\newcommand{\vph}{\varphi}
 
+% Delimiters and common notation
 \newcommand{\seq}[2]{\ensuremath{#1_1,#1_2,\ldots,#1_{#2}}}
 \newcommand{\lr}[1]{\left(#1\right)}
 \newcommand{\lrang}[1]{\left\langle #1 \right\rangle}
-\newcommand{\lrv}[1]{\lvert #1 \rvert}
-\newcommand{\lrV}[1]{\left\| #1 \right\|} 
-\newcommand{\lrb}[1]{\left\{ #1 \right\}}
+\newcommand{\lrv}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\lrs}[1]{\left[ #1 \right]}
+\newcommand{\lrV}[1]{\left\| #1 \right\|}
 \newcommand{\norm}[2]{\left\| #1 \right\|_{#2}}
-\newcommand{\inp}[2]{\left\langle #1 \right\rangle_{#2}} % inner product
-\newcommand*\diff{\mathop{}\!\mathrm{d}} % differential operator
+\newcommand{\inp}[2]{\left\langle #1 \right\rangle_{#2}} % Subscripted inner product.
+\newcommand{\lrb}[1]{\left\{ #1\right\}}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}} % Differential operator.
 
 \newcommand{\id}{\mathbf{I}}
-\newcommand{\Tt}{^\mathsf{\scriptscriptstyle T}} %transpose
-\newcommand{\inv}{^{-1}}%inverse
+\newcommand{\Tt}{^\mathsf{\scriptscriptstyle T}} % Transpose.
+\newcommand{\inv}{^{-1}} % Inverse.
 
+\newcommand{\newterm}[1]{\textbf{#1}}
 
-% Highlight a newly defined term
-\newcommand{\newterm}[1]{{\bf #1}}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\1}{\bm{1}}
 
+% Upright lowercase letters
+\newcommand{\ra}{\textnormal{a}}
+\newcommand{\rb}{\textnormal{b}}
+\newcommand{\rc}{\textnormal{c}}
+\newcommand{\rd}{\textnormal{d}}
+\newcommand{\re}{\textnormal{e}}
+\newcommand{\rf}{\textnormal{f}}
+\newcommand{\rg}{\textnormal{g}}
+\newcommand{\rh}{\textnormal{h}}
+\newcommand{\ri}{\textnormal{i}}
+\newcommand{\rj}{\textnormal{j}}
+\newcommand{\rk}{\textnormal{k}}
+\newcommand{\rl}{\textnormal{l}}
+% \rm is reserved, so there is no upright-m shorthand.
+\newcommand{\rn}{\textnormal{n}}
+\newcommand{\ro}{\textnormal{o}}
+\newcommand{\rp}{\textnormal{p}}
+\renewcommand{\rq}{\textnormal{q}} % Replaces LaTeX's right-quote command.
+\newcommand{\rr}{\textnormal{r}}
+\newcommand{\rs}{\textnormal{s}}
+\newcommand{\rt}{\textnormal{t}}
+\newcommand{\ru}{\textnormal{u}}
+\newcommand{\rv}{\textnormal{v}}
+\newcommand{\rw}{\textnormal{w}}
+\newcommand{\rx}{\textnormal{x}}
+\newcommand{\ry}{\textnormal{y}}
+\newcommand{\rz}{\textnormal{z}}
 
-\def\ceil#1{\lceil #1 \rceil}
-\def\floor#1{\lfloor #1 \rfloor}
-\def\1{\bm{1}}
+% Bold lowercase vectors
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\bc}{\mathbf{c}}
+\newcommand{\bd}{\mathbf{d}}
+\newcommand{\be}{\mathbf{e}}
+% \newcommand{\bf}{\mathbf{f}} % Conflicts with LaTeX's legacy font command.
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\bh}{\mathbf{h}}
+\newcommand{\bi}{\mathbf{i}}
+\newcommand{\bj}{\mathbf{j}}
+\newcommand{\bk}{\mathbf{k}}
+\newcommand{\bl}{\mathbf{l}}
+% \newcommand{\bm}{\mathbf{m}} % Reserved by the bm package.
+\newcommand{\bn}{\mathbf{n}}
+\newcommand{\bo}{\mathbf{o}}
+\newcommand{\bp}{\mathbf{p}}
+\newcommand{\bq}{\mathbf{q}}
+\newcommand{\br}{\mathbf{r}}
+\newcommand{\bs}{\mathbf{s}}
+\newcommand{\bt}{\mathbf{t}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bz}{\mathbf{z}}
 
+% Bold uppercase matrices
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\bM}{\mathbf{M}}
+\newcommand{\bN}{\mathbf{N}}
+\newcommand{\bO}{\mathbf{O}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bT}{\mathbf{T}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bZ}{\mathbf{Z}}
 
+% Upright uppercase letters
+\newcommand{\rA}{\textnormal{A}}
+\newcommand{\rB}{\textnormal{B}}
+\newcommand{\rC}{\textnormal{C}}
+\newcommand{\rD}{\textnormal{D}}
+\newcommand{\rE}{\textnormal{E}}
+\newcommand{\rF}{\textnormal{F}}
+\newcommand{\rG}{\textnormal{G}}
+\newcommand{\rH}{\textnormal{H}}
+\newcommand{\rI}{\textnormal{I}}
+\newcommand{\rJ}{\textnormal{J}}
+\newcommand{\rK}{\textnormal{K}}
+\newcommand{\rL}{\textnormal{L}}
+\newcommand{\rM}{\textnormal{M}}
+\newcommand{\rN}{\textnormal{N}}
+\newcommand{\rO}{\textnormal{O}}
+\newcommand{\rP}{\textnormal{P}}
+\newcommand{\rQ}{\textnormal{Q}}
+\newcommand{\rR}{\textnormal{R}}
+\newcommand{\rS}{\textnormal{S}}
+\newcommand{\rT}{\textnormal{T}}
+\newcommand{\rU}{\textnormal{U}}
+\newcommand{\rV}{\textnormal{V}}
+\newcommand{\rW}{\textnormal{W}}
+\newcommand{\rX}{\textnormal{X}}
+\newcommand{\rY}{\textnormal{Y}}
+\newcommand{\rZ}{\textnormal{Z}}
 
+% Bold lowercase symbols
+\newcommand{\bma}{\bm{a}}
+\newcommand{\bmb}{\bm{b}}
+\newcommand{\bmc}{\bm{c}}
+\newcommand{\bmd}{\bm{d}}
+\newcommand{\bme}{\bm{e}}
+\newcommand{\bmf}{\bm{f}}
+\newcommand{\bmg}{\bm{g}}
+\newcommand{\bmh}{\bm{h}}
+\newcommand{\bmi}{\bm{i}}
+\newcommand{\bmj}{\bm{j}}
+\newcommand{\bmk}{\bm{k}}
+\newcommand{\bml}{\bm{l}}
+\newcommand{\bmm}{\bm{m}}
+\newcommand{\bmn}{\bm{n}}
+\newcommand{\bmo}{\bm{o}}
+\newcommand{\bmp}{\bm{p}}
+\newcommand{\bmq}{\bm{q}}
+\newcommand{\bmr}{\bm{r}}
+\newcommand{\bms}{\bm{s}}
+\newcommand{\bmt}{\bm{t}}
+\newcommand{\bmu}{\bm{u}}
+\newcommand{\bmv}{\bm{v}}
+\newcommand{\bmw}{\bm{w}}
+\newcommand{\bmx}{\bm{x}}
+\newcommand{\bmy}{\bm{y}}
+\newcommand{\bmz}{\bm{z}}
 
+% Bold uppercase symbols
+\newcommand{\bmA}{\bm{A}}
+\newcommand{\bmB}{\bm{B}}
+\newcommand{\bmC}{\bm{C}}
+\newcommand{\bmD}{\bm{D}}
+\newcommand{\bmE}{\bm{E}}
+\newcommand{\bmF}{\bm{F}}
+\newcommand{\bmG}{\bm{G}}
+\newcommand{\bmH}{\bm{H}}
+\newcommand{\bmI}{\bm{I}}
+\newcommand{\bmJ}{\bm{J}}
+\newcommand{\bmK}{\bm{K}}
+\newcommand{\bmL}{\bm{L}}
+\newcommand{\bmM}{\bm{M}}
+\newcommand{\bmN}{\bm{N}}
+\newcommand{\bmO}{\bm{O}}
+\newcommand{\bmP}{\bm{P}}
+\newcommand{\bmQ}{\bm{Q}}
+\newcommand{\bmR}{\bm{R}}
+\newcommand{\bmS}{\bm{S}}
+\newcommand{\bmT}{\bm{T}}
+\newcommand{\bmU}{\bm{U}}
+\newcommand{\bmV}{\bm{V}}
+\newcommand{\bmW}{\bm{W}}
+\newcommand{\bmX}{\bm{X}}
+\newcommand{\bmY}{\bm{Y}}
+\newcommand{\bmZ}{\bm{Z}}
 
-
-\def\ra{{\textnormal{a}}}
-\def\rb{{\textnormal{b}}}
-\def\rc{{\textnormal{c}}}
-\def\rd{{\textnormal{d}}}
-\def\re{{\textnormal{e}}}
-\def\rf{{\textnormal{f}}}
-\def\rg{{\textnormal{g}}}
-\def\rh{{\textnormal{h}}}
-\def\ri{{\textnormal{i}}}
-\def\rj{{\textnormal{j}}}
-\def\rk{{\textnormal{k}}}
-\def\rl{{\textnormal{l}}}
-% rm is already a command, just don't name any random variables m
-\def\rn{{\textnormal{n}}}
-\def\ro{{\textnormal{o}}}
-\def\rp{{\textnormal{p}}}
-\def\rq{{\textnormal{q}}}
-\def\rr{{\textnormal{r}}}
-\def\rs{{\textnormal{s}}}
-\def\rt{{\textnormal{t}}}
-\def\ru{{\textnormal{u}}}
-\def\rv{{\textnormal{v}}}
-\def\rw{{\textnormal{w}}}
-\def\rx{{\textnormal{x}}}
-\def\ry{{\textnormal{y}}}
-\def\rz{{\textnormal{z}}}
-
-
-
-\def\ba{{\mathbf{a}}}
-\def\bb{{\mathbf{b}}}
-\def\bc{{\mathbf{c}}}
-\def\bd{{\mathbf{d}}}
-\def\be{{\mathbf{e}}}
-\def\bf{{\mathbf{f}}}
-\def\bg{{\mathbf{g}}}
-\def\bh{{\mathbf{h}}}
-\def\bu{{\mathbf{i}}}
-\def\bj{{\mathbf{j}}}
-\def\bk{{\mathbf{k}}}
-\def\bl{{\mathbf{l}}}
-% \def\bm{{\mathbf{m}}} \bm is a package
-\def\bn{{\mathbf{n}}}
-\def\bo{{\mathbf{o}}}
-\def\bp{{\mathbf{p}}}
-\def\bq{{\mathbf{q}}}
-\def\br{{\mathbf{r}}}
-\def\bs{{\mathbf{s}}}
-\def\bt{{\mathbf{t}}}
-\def\bu{{\mathbf{u}}}
-\def\bv{{\mathbf{v}}}
-\def\bw{{\mathbf{w}}}
-\def\bx{{\mathbf{x}}}
-\def\by{{\mathbf{y}}}
-\def\bz{{\mathbf{z}}}
-
-
-
-\def\bA{{\mathbf{A}}}
-\def\bB{{\mathbf{B}}}
-\def\bC{{\mathbf{C}}}
-\def\bD{{\mathbf{D}}}
-\def\bE{{\mathbf{E}}}
-\def\bF{{\mathbf{F}}}
-\def\bG{{\mathbf{G}}}
-\def\bH{{\mathbf{H}}}
-\def\bI{{\mathbf{I}}}
-\def\bJ{{\mathbf{J}}}
-\def\bK{{\mathbf{K}}}
-\def\bL{{\mathbf{L}}}
-\def\bM{{\mathbf{M}}}
-\def\bN{{\mathbf{N}}}
-\def\bO{{\mathbf{O}}}
-\def\bP{{\mathbf{P}}}
-\def\bQ{{\mathbf{Q}}}
-\def\bR{{\mathbf{R}}}
-\def\bS{{\mathbf{S}}}
-\def\bT{{\mathbf{T}}}
-\def\bU{{\mathbf{U}}}
-\def\bV{{\mathbf{V}}}
-\def\bW{{\mathbf{W}}}
-\def\bX{{\mathbf{X}}}
-\def\bY{{\mathbf{Y}}}
-\def\bZ{{\mathbf{Z}}}
-
-
-\def\rA{{\textnormal{A}}}
-\def\rB{{\textnormal{B}}}
-\def\rC{{\textnormal{C}}}
-\def\rD{{\textnormal{D}}}
-\def\rE{{\textnormal{E}}}
-\def\rF{{\textnormal{F}}}
-\def\rG{{\textnormal{G}}}
-\def\rH{{\textnormal{H}}}
-\def\rI{{\textnormal{I}}}
-\def\rJ{{\textnormal{J}}}
-\def\rK{{\textnormal{K}}}
-\def\rL{{\textnormal{L}}}
-\def\rM{{\textnormal{M}}}
-\def\rN{{\textnormal{N}}}
-\def\rO{{\textnormal{O}}}
-\def\rP{{\textnormal{P}}}
-\def\rQ{{\textnormal{Q}}}
-\def\rR{{\textnormal{R}}}
-\def\rS{{\textnormal{S}}}
-\def\rT{{\textnormal{T}}}
-\def\rU{{\textnormal{U}}}
-\def\rV{{\textnormal{V}}}
-\def\rW{{\textnormal{W}}}
-\def\rX{{\textnormal{X}}}
-\def\rY{{\textnormal{Y}}}
-\def\rZ{{\textnormal{Z}}}
-
-
-\def\bma{{\bm{a}}}
-\def\bmb{{\bm{b}}}
-\def\bmc{{\bm{c}}}
-\def\bmd{{\bm{d}}}
-\def\bme{{\bm{e}}}
-\def\bmf{{\bm{f}}}
-\def\bmg{{\bm{g}}}
-\def\bmh{{\bm{h}}}
-\def\bmi{{\bm{i}}}
-\def\bmj{{\bm{j}}}
-\def\bmk{{\bm{k}}}
-\def\bml{{\bm{l}}}
-\def\bmm{{\bm{m}}}
-\def\bmn{{\bm{n}}}
-\def\bmo{{\bm{o}}}
-\def\bmp{{\bm{p}}}
-\def\bmq{{\bm{q}}}
-\def\bmr{{\bm{r}}}
-\def\bms{{\bm{s}}}
-\def\bmt{{\bm{t}}}
-\def\bmu{{\bm{u}}}
-\def\bmv{{\bm{v}}}
-\def\bmw{{\bm{w}}}
-\def\bmx{{\bm{x}}}
-\def\bmy{{\bm{y}}}
-\def\bmz{{\bm{z}}}
-
-
-
-\def\bmA{{\bm{A}}}
-\def\bmB{{\bm{B}}}
-\def\bmC{{\bm{C}}}
-\def\bmD{{\bm{D}}}
-\def\bmE{{\bm{E}}}
-\def\bmF{{\bm{F}}}
-\def\bmG{{\bm{G}}}
-\def\bmH{{\bm{H}}}
-\def\bmI{{\bm{I}}}
-\def\bmJ{{\bm{J}}}
-\def\bmK{{\bm{K}}}
-\def\bmL{{\bm{L}}}
-\def\bmM{{\bm{M}}}
-\def\bmN{{\bm{N}}}
-\def\bmO{{\bm{O}}}
-\def\bmP{{\bm{P}}}
-\def\bmQ{{\bm{Q}}}
-\def\bmR{{\bm{R}}}
-\def\bmS{{\bm{S}}}
-\def\bmT{{\bm{T}}}
-\def\bmU{{\bm{U}}}
-\def\bmV{{\bm{V}}}
-\def\bmW{{\bm{W}}}
-\def\bmX{{\bm{X}}}
-\def\bmY{{\bm{Y}}}
-\def\bmZ{{\bm{Z}}}
-
-
-% Tensor
+% Tensors
 \DeclareMathAlphabet{\mathsfit}{\encodingdefault}{\sfdefault}{m}{sl}
 \SetMathAlphabet{\mathsfit}{bold}{\encodingdefault}{\sfdefault}{bx}{n}
 \newcommand{\tens}[1]{\bm{\mathsfit{#1}}}
-\def\tA{{\tens{A}}}
-\def\tB{{\tens{B}}}
-\def\tC{{\tens{C}}}
-\def\tD{{\tens{D}}}
-\def\tE{{\tens{E}}}
-\def\tF{{\tens{F}}}
-\def\tG{{\tens{G}}}
-\def\tH{{\tens{H}}}
-\def\tI{{\tens{I}}}
-\def\tJ{{\tens{J}}}
-\def\tK{{\tens{K}}}
-\def\tL{{\tens{L}}}
-\def\tM{{\tens{M}}}
-\def\tN{{\tens{N}}}
-\def\tO{{\tens{O}}}
-\def\tP{{\tens{P}}}
-\def\tQ{{\tens{Q}}}
-\def\tR{{\tens{R}}}
-\def\tS{{\tens{S}}}
-\def\tT{{\tens{T}}}
-\def\tU{{\tens{U}}}
-\def\tV{{\tens{V}}}
-\def\tW{{\tens{W}}}
-\def\tX{{\tens{X}}}
-\def\tY{{\tens{Y}}}
-\def\tZ{{\tens{Z}}}
+\newcommand{\tA}{\tens{A}}
+\newcommand{\tB}{\tens{B}}
+\newcommand{\tC}{\tens{C}}
+\newcommand{\tD}{\tens{D}}
+\newcommand{\tE}{\tens{E}}
+\newcommand{\tF}{\tens{F}}
+\newcommand{\tG}{\tens{G}}
+\newcommand{\tH}{\tens{H}}
+\newcommand{\tI}{\tens{I}}
+\newcommand{\tJ}{\tens{J}}
+\newcommand{\tK}{\tens{K}}
+\newcommand{\tL}{\tens{L}}
+\newcommand{\tM}{\tens{M}}
+\newcommand{\tN}{\tens{N}}
+\newcommand{\tO}{\tens{O}}
+\newcommand{\tP}{\tens{P}}
+\newcommand{\tQ}{\tens{Q}}
+\newcommand{\tR}{\tens{R}}
+\newcommand{\tS}{\tens{S}}
+\newcommand{\tT}{\tens{T}}
+\newcommand{\tU}{\tens{U}}
+\newcommand{\tV}{\tens{V}}
+\newcommand{\tW}{\tens{W}}
+\newcommand{\tX}{\tens{X}}
+\newcommand{\tY}{\tens{Y}}
+\newcommand{\tZ}{\tens{Z}}
 
-
-% Caligraphic(alternative)
-\def\gA{{\mathcal{A}}}
-\def\gB{{\mathcal{B}}}
-\def\gC{{\mathcal{C}}}
-\def\gD{{\mathcal{D}}}
-\def\gE{{\mathcal{E}}}
-\def\gF{{\mathcal{F}}}
-\def\gG{{\mathcal{G}}}
-\def\gH{{\mathcal{H}}}
-\def\gI{{\mathcal{I}}}
-\def\gJ{{\mathcal{J}}}
-\def\gK{{\mathcal{K}}}
-\def\gL{{\mathcal{L}}}
-\def\gM{{\mathcal{M}}}
-\def\gN{{\mathcal{N}}}
-\def\gO{{\mathcal{O}}}
-\def\gP{{\mathcal{P}}}
-\def\gQ{{\mathcal{Q}}}
-\def\gR{{\mathcal{R}}}
-\def\gS{{\mathcal{S}}}
-\def\gT{{\mathcal{T}}}
-\def\gU{{\mathcal{U}}}
-\def\gV{{\mathcal{V}}}
-\def\gW{{\mathcal{W}}}
-\def\gX{{\mathcal{X}}}
-\def\gY{{\mathcal{Y}}}
-\def\gZ{{\mathcal{Z}}}
-
-% Sets
-\def\sA{{\mathbb{A}}}
-\def\sB{{\mathbb{B}}}
-\def\sC{{\mathbb{C}}}
-\def\sD{{\mathbb{D}}}
-% Don't use a set called E, because this would be the same as our symbol
-% for expectation.
-\def\sF{{\mathbb{F}}}
-\def\sG{{\mathbb{G}}}
-\def\sH{{\mathbb{H}}}
-\def\sI{{\mathbb{I}}}
-\def\sJ{{\mathbb{J}}}
-\def\sK{{\mathbb{K}}}
-\def\sL{{\mathbb{L}}}
-\def\sM{{\mathbb{M}}}
-\def\sN{{\mathbb{N}}}
-\def\sO{{\mathbb{O}}}
-\def\sP{{\mathbb{P}}}
-\def\sQ{{\mathbb{Q}}}
-\def\sR{{\mathbb{R}}}
-\def\sS{{\mathbb{S}}}
-\def\sT{{\mathbb{T}}}
-\def\sU{{\mathbb{U}}}
-\def\sV{{\mathbb{V}}}
-\def\sW{{\mathbb{W}}}
-\def\sX{{\mathbb{X}}}
-\def\sY{{\mathbb{Y}}}
-\def\sZ{{\mathbb{Z}}}
-
-
-\newcommand{\laplace}{\mathrm{Laplace}} % Laplace distribution
+% Distributions and statistics
+\DeclareMathOperator{\laplace}{Laplace}
 
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\Law}{\mathcal{L}}
-\newcommand{\emp}{\tilde{p}}
-\newcommand{\softmax}{\mathrm{softmax}}
+\DeclareMathOperator{\softmax}{softmax}
 
 \newcommand{\KL}{D_{\mathrm{KL}}}
-\newcommand{\Var}{\mathrm{Var}}
-\newcommand{\SE}{\mathrm{SE}}
-\newcommand{\Cov}{\mathrm{Cov}}
-
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\SE}{SE}
+\DeclareMathOperator{\Cov}{Cov}
 
 \let\ab\allowbreak
-
 
 \newcommand{\normop}[1]{\left\| #1 \right\|_{\mathrm{op}}}
 \newcommand{\normHS}[1]{\left\| #1 \right\|_{\scriptscriptstyle \mathrm{HS}}}
 
-
-%import of some of Kevin's macros (and make analogous ones)
+% Draft annotations
 \newcommand{\todo}[1]{\par\noindent\textcolor{red}{$\oplus$}\ \textcolor{gray}{#1}\par}
-%inline todo
 \newcommand{\tdil}[1]{(\textcolor{red}{$\oplus$}\ \textcolor{gray}{#1})}
 \newcommand{\note}[1]{\textcolor{blue}{#1}}
 
+\newcommand{\filledcheckmark}{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+\newcommand{\done}{\textcolor{green}{\filledcheckmark}}
 
+\newcommand{\crossmark}{\tikz\draw[scale=0.3,thick](0,0) -- (1,1) (0,1) -- (1,0);}
+\newcommand{\missing}{\textcolor{red}{\crossmark}}
 
-\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
-\newcommand{\done}[0]{\textcolor{green}{\checkmark}}
-
-\def\crossmark{\tikz\draw[scale=0.3,thick](0,0) -- (1,1) (0,1) -- (1,0);}
-\newcommand{\missing}[0]{\textcolor{red}{\crossmark}}
-
-%horizontally centered column of adjustible width
+% Horizontally centered tabularx column.
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 
 \newcommand{\tld}[1]{\widetilde{#1}}
@@ -571,10 +486,10 @@
 \newcommand{\mbb}[1]{\mathbb{#1}}
 \newcommand{\mc}[1]{\mathcal{#1}}
 
-%pushforward
+% Pushforward
 \newcommand{\push}{_\sharp}
 
-%groups
+% Groups
 \newcommand{\subgp}{<}
 \newcommand{\nsubgp}{\triangleleft}
 \newcommand{\sdprod}{\rtimes}
